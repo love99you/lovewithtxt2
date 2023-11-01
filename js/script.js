@@ -32,10 +32,6 @@ uniform float time;
 vec2 points[POINT_COUNT];
 const float speed = -0.5;
 const float len = 0.25;
-const query = new URLSearchParams(window.location.search);
-const name = query.get('name');
-
-document.getElementById('name').innerText = name; 
 float intensity = 0.9;
 float radius = 0.015;
 
@@ -179,7 +175,14 @@ function onWindowResize() {
     gl.uniform1f(widthHandle, window.innerWidth);
     gl.uniform1f(heightHandle, window.innerHeight);
 }
+window.onload = function() {
 
+  const query = new URLSearchParams(window.location.search);
+  const name = query.get('name');
+
+  document.getElementById('name').innerText = name;
+
+}; 
 
 //Compile shader and combine with source
 function compileShader(shaderSource, shaderType) {
